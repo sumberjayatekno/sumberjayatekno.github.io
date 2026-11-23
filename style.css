@@ -98,3 +98,25 @@ footer{padding:8px 16px 96px}
 .fab:active{transform:scale(.96)}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+
+/* Formulir WhatsApp */
+button.btn{font-family:inherit;cursor:pointer}
+.wa-dialog{border:1px solid var(--line);border-radius:20px;padding:0;width:min(440px,calc(100% - 32px));max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 24px 60px rgba(15,23,42,.22);color:var(--ink);background:var(--surface)}
+.wa-dialog::backdrop{background:rgba(15,23,42,.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.wa-dialog[open]{animation:dlgIn .28s var(--ease)}
+.wa-dialog[open]::backdrop{animation:bdIn .28s ease}
+@keyframes dlgIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bdIn{from{opacity:0}to{opacity:1}}
+.wa-form{padding:24px;display:grid;gap:14px}
+.wa-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wa-head h2{margin:0}
+.wa-x{border:0;background:var(--soft);width:34px;height:34px;border-radius:10px;font-size:1.3rem;line-height:1;cursor:pointer;color:var(--mute);transition:background .2s}
+.wa-x:hover{background:var(--line)}
+.wa-sub{margin:0;color:var(--mute);font-size:.92rem}
+.wa-form label{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+.wa-form label span{font-weight:400;color:var(--mute)}
+.wa-form input,.wa-form select,.wa-form textarea{font:inherit;font-weight:400;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%;transition:border-color .2s,box-shadow .2s}
+.wa-form textarea{resize:vertical}
+.wa-form input:focus,.wa-form select:focus,.wa-form textarea:focus{outline:none;border-color:#93b4f5;box-shadow:0 0 0 3px rgba(11,58,148,.12)}
+.wa-err{margin:0;color:var(--red);font-size:.9rem}
+.wa-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:4px}
