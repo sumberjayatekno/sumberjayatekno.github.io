@@ -120,3 +120,18 @@ button.btn{font-family:inherit;cursor:pointer}
 .wa-form input:focus,.wa-form select:focus,.wa-form textarea:focus{outline:none;border-color:#93b4f5;box-shadow:0 0 0 3px rgba(11,58,148,.12)}
 .wa-err{margin:0;color:var(--red);font-size:.9rem}
 .wa-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:4px}
+/* Kalkulator biaya kunjungan */
+.calc{background:var(--soft);border-radius:14px;padding:20px;margin:12px 0 28px}
+.calc-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.calc-or{color:var(--mute);font-size:.92rem}
+.calc select{font:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);min-width:200px;transition:border-color .2s,box-shadow .2s}
+.calc select:focus{outline:none;border-color:#93b4f5;box-shadow:0 0 0 3px rgba(11,58,148,.12)}
+.calc-out{margin-top:16px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:12px;animation:fadeIn .3s var(--ease)}
+.calc-out[hidden]{display:none}
+.calc-out p{margin:0 0 8px}
+.calc-out b{font-size:1.15rem}
+.calc-out .btn{margin-top:6px}
+.calc-note,.calc-note-inline{font-size:.85rem;color:var(--mute)}
+.calc-note{margin:14px 0 0}
+.calc-warn{color:#9a3412;font-size:.9rem}
+@media(max-width:900px){.calc select,.calc-actions .btn{width:100%}.calc-or{display:none}}

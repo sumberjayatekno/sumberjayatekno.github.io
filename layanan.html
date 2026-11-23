@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#ffffff">
 <script>document.documentElement.className+=" js"</script>
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <div class="app">
@@ -73,6 +73,14 @@
 </div>
 <h3>Garansi</h3>
 <p class="note">Setiap pekerjaan disertai garansi sesuai jenisnya. Masa garansi pemasangan dan servis dijelaskan sebelum pengerjaan dimulai. Perangkat baru mengikuti garansi dari pabrikan atau distributor.</p>
+<h2 id="biaya-kunjungan">Estimasi biaya kunjungan</h2>
+<p>Kami melayani Jakarta Barat dan sekitarnya. Kunjungan ke lokasi dalam radius 5 km dari tempat servis tidak dikenakan biaya transportasi. Lebih dari 5 km, biaya transportasi Rp10.000 per km.</p>
+<div class="calc" id="calc">
+<div class="calc-actions"><button type="button" class="btn wa" id="calc-gps">Gunakan lokasi saya</button><span class="calc-or">atau</span>
+<select id="calc-kec" aria-label="Pilih kecamatan"><option value="">Pilih kecamatan</option><option>Cengkareng</option><option>Kalideres</option><option>Kembangan</option><option>Kebon Jeruk</option><option>Grogol Petamburan</option><option>Palmerah</option><option>Taman Sari</option><option>Tambora</option></select></div>
+<div class="calc-out" id="calc-out" aria-live="polite" hidden></div>
+<p class="calc-note">Estimasi dihitung dari jarak garis lurus dikali 1,4 sebagai perkiraan jarak jalan. Lokasi Anda hanya diproses di browser dan tidak disimpan. Biaya final dikonfirmasi lewat WhatsApp.</p>
+</div>
 <div class="btns"><a class="btn wa" href="https://wa.me/6285711471040?text=Halo%20Sumber%20Jaya%20Tekno%2C%20saya%20ingin%20memesan%20layanan.">Pesan lewat WhatsApp</a></div>
 </div></div>
 </main>
@@ -80,6 +88,6 @@
 </div>
 </div>
 <a class="fab" href="https://wa.me/6285711471040?text=Halo%20Sumber%20Jaya%20Tekno%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda." aria-label="Chat WhatsApp dengan Sumber Jaya Tekno">Chat WhatsApp</a>
-<script src="script.js?v=3" defer></script>
+<script src="script.js?v=4" defer></script>
 </body>
 </html>
