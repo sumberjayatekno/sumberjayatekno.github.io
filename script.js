@@ -106,8 +106,8 @@
   var out = document.getElementById('calc-out');
   if (!out) return;
   // Pengaturan: ubah angka di sini bila perlu
-  var ORIGIN = { lat: -6.1400, lon: 106.7350 }; // perkiraan titik tempat servis (Cengkareng Timur)
-  var FREE_KM = 5, RATE = 10000, FACTOR = 1.4, FAR_KM = 30, WA = '6285711471040';
+  var ORIGIN = { lat: -6.13007, lon: 106.73569 }; // titik tempat servis (dari Google Maps)
+  var FREE_KM = 3, STEP_KM = 0.5, RATE = 10000, FACTOR = 1, FAR_KM = 20, WA = '6285711471040'; // FACTOR 1 = garis lurus
   // Perkiraan titik tengah kecamatan Jakarta Barat
   var KEC = {
     'Cengkareng': [-6.1485, 106.7300], 'Kalideres': [-6.1400, 106.7050],
@@ -142,15 +142,15 @@
     var straight = haversine(ORIGIN.lat, ORIGIN.lon, lat, lon);
     var road = straight * FACTOR;
     var excess = Math.max(0, road - FREE_KM);
-    var kmBill = Math.ceil(excess - 1e-9);
-    var fee = kmBill * RATE;
-    var html = '<p>Estimasi jarak jalan: <b>' + fmt(road) + ' km</b>' +
+    var steps = Math.ceil(excess / STEP_KM - 1e-9);
+    var fee = steps * RATE;
+    var html = '<p>Jarak garis lurus: <b>' + fmt(road) + ' km</b>' +
       (kecName ? ' (dari titik tengah Kecamatan ' + kecName + ')' : '') + '</p>';
     if (fee === 0) {
       html += '<p><b>Gratis biaya transportasi</b>, masih dalam radius ' + FREE_KM + ' km.</p>';
     } else {
       html += '<p>Estimasi biaya transportasi: <b>' + rp(fee) + '</b> ' +
-        '<span class="calc-note-inline">(kelebihan ' + fmt(excess) + ' km, dibulatkan ' + kmBill + ' km &times; ' + rp(RATE) + ')</span></p>';
+        '<span class="calc-note-inline">(kelebihan ' + fmt(excess) + ' km, dibulatkan ' + steps + ' &times; 500 m, ' + rp(RATE) + ' per 500 m)</span></p>';
     }
     if (accuracy && accuracy > 2000) {
       html += '<p class="calc-warn">Akurasi lokasi perangkat Anda rendah (sekitar ' + Math.round(accuracy) + ' m), hasil bisa meleset.</p>';
@@ -161,7 +161,7 @@
     out.hidden = false;
     out.innerHTML = html;
 
-    var ringkas = 'Estimasi jarak jalan sekitar ' + fmt(road) + ' km, estimasi biaya transportasi ' + (fee ? rp(fee) : 'gratis') + '.';
+    var ringkas = 'Jarak garis lurus sekitar ' + fmt(road) + ' km, estimasi biaya transportasi ' + (fee ? rp(fee) : 'gratis') + '.';
     var catatan = kecName
       ? 'Lokasi: Kecamatan ' + kecName + '. ' + ringkas
       : ringkas + '\nLokasi saya: https://maps.google.com/?q=' + lat.toFixed(5) + ',' + lon.toFixed(5);
