@@ -144,13 +144,14 @@
     var excess = Math.max(0, road - FREE_KM);
     var steps = Math.ceil(excess / STEP_KM - 1e-9);
     var fee = steps * RATE;
-    var html = '<p>Jarak garis lurus: <b>' + fmt(road) + ' km</b>' +
-      (kecName ? ' (dari titik tengah Kecamatan ' + kecName + ')' : '') + '</p>';
+    var html = '';
     if (fee === 0) {
-      html += '<p><b>Gratis biaya transportasi</b>, masih dalam radius ' + FREE_KM + ' km.</p>';
+      html += '<p><b>Gratis biaya transportasi</b> ke lokasi Anda.</p>';
     } else {
-      html += '<p>Estimasi biaya transportasi: <b>' + rp(fee) + '</b> ' +
-        '<span class="calc-note-inline">(kelebihan ' + fmt(excess) + ' km, dibulatkan ' + steps + ' &times; 500 m, ' + rp(RATE) + ' per 500 m)</span></p>';
+      html += '<p>Estimasi biaya transportasi ke lokasi Anda: <b>' + rp(fee) + '</b></p>';
+    }
+    if (kecName) {
+      html += '<p class="calc-note-inline">Perkiraan kasar untuk Kecamatan ' + kecName + '. Untuk hasil lebih akurat, gunakan tombol Gunakan lokasi saya.</p>';
     }
     if (accuracy && accuracy > 2000) {
       html += '<p class="calc-warn">Akurasi lokasi perangkat Anda rendah (sekitar ' + Math.round(accuracy) + ' m), hasil bisa meleset.</p>';
@@ -161,7 +162,7 @@
     out.hidden = false;
     out.innerHTML = html;
 
-    var ringkas = 'Jarak garis lurus sekitar ' + fmt(road) + ' km, estimasi biaya transportasi ' + (fee ? rp(fee) : 'gratis') + '.';
+    var ringkas = 'Estimasi biaya transportasi ke lokasi saya: ' + (fee ? rp(fee) : 'gratis') + '.';
     var catatan = kecName
       ? 'Lokasi: Kecamatan ' + kecName + '. ' + ringkas
       : ringkas + '\nLokasi saya: https://maps.google.com/?q=' + lat.toFixed(5) + ',' + lon.toFixed(5);

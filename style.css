@@ -135,3 +135,13 @@ button.btn{font-family:inherit;cursor:pointer}
 .calc-note{margin:14px 0 0}
 .calc-warn{color:#9a3412;font-size:.9rem}
 @media(max-width:900px){.calc select,.calc-actions .btn{width:100%}.calc-or{display:none}}
+/* Harga dan tabel estimasi */
+.calc-tip{margin:12px 0 0;font-size:.9rem;color:var(--mute)}
+.price{font-weight:700;font-size:1.1rem;margin:0 0 14px;color:var(--ink)}
+.price small{display:block;font-weight:400;color:var(--mute);font-size:.82rem;margin-top:2px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;margin:14px 0 10px}
+.tbl{width:100%;border-collapse:collapse;font-size:.95rem}
+.tbl th,.tbl td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:last-child{white-space:nowrap;font-weight:600}
+.tbl .grp th{background:var(--soft);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
