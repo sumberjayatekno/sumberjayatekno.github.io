@@ -161,3 +161,22 @@ footer a{color:inherit}
 .tile:hover{transform:translateY(-3px);border-color:#cfd6e2;box-shadow:0 12px 26px rgba(15,23,42,.08)}
 .tile small{display:block;color:var(--mute);font-weight:400;font-size:.88rem;margin-top:2px}
 @media(max-width:900px){.tiles{grid-template-columns:1fr}.nf>.wrap{padding:40px 20px}}
+/* Panduan, artikel, dan QR */
+.tiles.two{grid-template-columns:repeat(2,1fr)}
+.tile h2{font-size:1.05rem;margin:0 0 4px;letter-spacing:-.01em}
+.tile p{margin:0;color:var(--mute);font-weight:400;font-size:.92rem}
+.tile .more{display:inline-block;margin-top:10px;color:var(--blue);font-weight:600;font-size:.9rem}
+.article .back{margin:0 0 14px;font-size:.92rem}
+.article .back a{color:var(--mute);text-decoration:none}
+.article .back a:hover{color:var(--blue)}
+.article .meta{color:var(--mute);font-size:.88rem;margin:0 0 18px}
+.article h2{margin-top:28px}
+.article p,.article li{max-width:68ch}
+.article ul,.article ol{padding-left:22px;margin:0 0 14px}
+.article li{margin-bottom:8px}
+.cta{background:var(--tint);border-radius:14px;padding:20px 22px;margin-top:30px}
+.cta p{margin:0 0 6px}
+.cta .btns{margin-top:14px}
+.qr-card{display:none}
+@media(min-width:901px){.qr-card{display:flex;gap:18px;align-items:center;margin:22px 0 0;padding:16px 18px;background:var(--soft);border-radius:14px;max-width:480px}.qr-card img{border-radius:10px;flex:none}.qr-card p{margin:4px 0 0;color:var(--mute);font-size:.92rem}}
+@media(max-width:900px){.tiles.two{grid-template-columns:1fr}}
