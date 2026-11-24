@@ -1,28 +1,44 @@
+/* Animasi muncul saat scroll (dibuat tahan banting: elemen tinggi dilewati, ada pengaman) */
 (function () {
-  var sel = 'main .stat, main .hero>.wrap, main section>.wrap, main .page>.wrap, main .pkg';
-  var els = Array.prototype.slice.call(document.querySelectorAll(sel));
-  if (!els.length) return;
-  els.forEach(function (el) {
-    var p = el.parentNode; p.__n = p.__n || 0;
-    el.style.transitionDelay = Math.min(p.__n++, 5) * 70 + 'ms';
-    el.classList.add('rv');
-  });
-  function show(el) {
-    el.classList.add('in');
-    setTimeout(function () {
-      el.classList.remove('rv', 'in');
-      el.style.transitionDelay = '';
-    }, 1000);
-  }
-  if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+  try {
+    var sel = 'main .stat, main .hero>.wrap, main section>.wrap, main .page>.wrap, main .pkg';
+    var vh = function () { return window.innerHeight || document.documentElement.clientHeight || 800; };
+    var els = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (el) {
+      return el.getBoundingClientRect().height < vh() * 0.8;
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(function (el) { io.observe(el); });
+    if (!els.length) return;
+    function show(el) {
+      if (!el.classList.contains('rv') || el.classList.contains('in')) return;
+      el.classList.add('in');
+      setTimeout(function () { el.classList.remove('rv', 'in'); el.style.transitionDelay = ''; }, 900);
+    }
+    function check() {
+      els.forEach(function (el) {
+        if (el.classList.contains('rv') && el.getBoundingClientRect().top < vh() * 0.96) show(el);
+      });
+    }
+    els.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      el.classList.add('rv');
+    });
+    var queued = false;
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      (window.requestAnimationFrame || setTimeout)(function () { queued = false; check(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', check);
+    check();
+    setTimeout(check, 250);
+    setTimeout(check, 1200);
+    // pengaman terakhir: jika masih ada yang tersembunyi setelah 4 detik, tampilkan semuanya
+    setTimeout(function () { els.forEach(function (el) { el.classList.remove('rv', 'in'); el.style.transitionDelay = ''; }); }, 4000 + 3000);
+  } catch (e) {
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'), function (el) { el.classList.remove('rv', 'in'); });
+  }
 })();
-
 /* Formulir singkat sebelum membuka WhatsApp */
 (function () {
   if (!window.HTMLDialogElement) return;
