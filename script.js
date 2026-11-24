@@ -66,6 +66,7 @@
       '<label>Keperluan<select name="topik" required>' + opts + '</select></label>' +
       '<label>Keterangan tambahan <span>(opsional)</span>' +
       '<textarea name="catatan" rows="3" maxlength="300" placeholder="Misalnya lokasi, jumlah kamera, atau jenis kerusakan"></textarea></label>' +
+      '<p class="wa-privasi">Nama dan keterangan hanya dipakai untuk menyusun pesan WhatsApp dan tidak disimpan oleh situs ini.</p>' +
       '<p class="wa-err" role="alert" hidden></p>' +
       '<div class="wa-actions"><button type="button" class="btn wa-cancel">Batal</button>' +
       '<button type="submit" class="btn wa">Lanjut ke WhatsApp</button></div>' +
@@ -122,7 +123,7 @@
   var out = document.getElementById('calc-out');
   if (!out) return;
   // Pengaturan: ubah angka di sini bila perlu
-  var ORIGIN = { lat: -6.13007, lon: 106.73569 }; // titik tempat servis (dari Google Maps)
+  var ORIGIN = { lat: -6.13028, lon: 106.73590 }; // titik tempat servis (dari Google Maps)
   var FREE_KM = 3, STEP_KM = 0.5, RATE = 10000, FACTOR = 1, FAR_KM = 20, WA = '6285711471040'; // FACTOR 1 = garis lurus
   // Perkiraan titik tengah kecamatan Jakarta Barat
   var KEC = {
